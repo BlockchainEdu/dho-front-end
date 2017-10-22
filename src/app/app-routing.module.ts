@@ -1,16 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component' ;
+import { HomeComponent } from './home/home.component';
+
 
 const routes: Routes = [
-  {path: 'home',
-   component: HomeComponent,
- },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
   {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
+  {
+    path: 'sponsor',
+    loadChildren: 'app/sponsor/sponsor.module#SponsorModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule'
+  },
+  // {
+  //   path: 'chapter',
+  //   loadChildren: 'app/chapter/chapter.module#ChapterModule'
+  // },
 ];
 
 @NgModule({
@@ -18,7 +32,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-//Add all routing components here to avoid declaring individually in app.module.ts
-
-export const routingComponents = [HomeComponent];
